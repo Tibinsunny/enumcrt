@@ -12,7 +12,7 @@ This requires Python 2.7 and We will soon release an update which supports Pytho
 
 `git clone https://github.com/Tibinsunny/enumcrt.git`
 
-Sublist3r depends on the json, urllib, and argparse python modules.
+Enumcrt depends on the json, urllib, and argparse python modules.
 
 For installation on windows:
 
