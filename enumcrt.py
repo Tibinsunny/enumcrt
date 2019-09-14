@@ -3,21 +3,21 @@ print("""\
 
  /$$$$$$$$ /$$   /$$ /$$   /$$ /$$      /$$  /$$$$$$  /$$$$$$$  /$$$$$$$$
 | $$_____/| $$$ | $$| $$  | $$| $$$    /$$$ /$$__  $$| $$__  $$|__  $$__/
-| $$      | $$$$| $$| $$  | $$| $$$$  /$$$$| $$  \__/| $$  \ $$   | $$   
-| $$$$$   | $$ $$ $$| $$  | $$| $$ $$/$$ $$| $$      | $$$$$$$/   | $$   
-| $$__/   | $$  $$$$| $$  | $$| $$  $$$| $$| $$      | $$__  $$   | $$   
-| $$      | $$\  $$$| $$  | $$| $$\  $ | $$| $$    $$| $$  \ $$   | $$   
-| $$$$$$$$| $$ \  $$|  $$$$$$/| $$ \/  | $$|  $$$$$$/| $$  | $$   | $$   
-|________/|__/  \__/ \______/ |__/     |__/ \______/ |__/  |__/   |__/   
-                                                                         
-                                                        (Beta)      
-                                                                         
+| $$      | $$$$| $$| $$  | $$| $$$$  /$$$$| $$  \__/| $$  \ $$   | $$
+| $$$$$   | $$ $$ $$| $$  | $$| $$ $$/$$ $$| $$      | $$$$$$$/   | $$
+| $$__/   | $$  $$$$| $$  | $$| $$  $$$| $$| $$      | $$__  $$   | $$
+| $$      | $$\  $$$| $$  | $$| $$\  $ | $$| $$    $$| $$  \ $$   | $$
+| $$$$$$$$| $$ \  $$|  $$$$$$/| $$ \/  | $$|  $$$$$$/| $$  | $$   | $$
+|________/|__/  \__/ \______/ |__/     |__/ \______/ |__/  |__/   |__/
+
+                                                        (Beta)
+
      #Developed_By:Tibin Sunny #Contact:tibinsunny95@gmail.com
 	        Huge Domain list are not supported
                      Feel Free to Report Bugs
- ________________________________________________________________  
-   """)                  
-                                                            
+ ________________________________________________________________
+   """)
+
 
 
 
@@ -39,7 +39,7 @@ if(output1!="None"):
     output=output1
     print ("Output:"+output)
     f1 = open(output, "a")
-    k=0  
+    k=0
 url2=url1
 temp="";
 num=0;
@@ -52,19 +52,16 @@ try:
     f.close()
     res = [ sub['name_value'] for sub in values ]
     res=list(dict.fromkeys(res))
-    
+
     try:
         for i in range(0,10000):
-            print(res[i])
+            index = i+1
+            print(str(index) + ". " + res[i])
             if k==0:
                 f1.write(res[i]+"\n")
-               
-                
-                
-    
+
     except:
         print("Completed")
         print "Domains Found:",i
 except:
-    print ("Looks like the server is taking too long to respond,This may be due to the huge domain list :) Try %25.yoursite.com")
-
+    print ("Looks like the server is taking too long to respond, This may be due to the huge domain list :) Try %25.yoursite.com")
