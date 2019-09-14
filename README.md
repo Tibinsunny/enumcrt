@@ -3,7 +3,7 @@ Enumcrt is a python tool designed to enumerate subdomains of websites using CRTS
 
 # Enumcrt overload
 
-While enumeration subdomain of certain sites like (Google,Yahoo...) the tool may not respond.This is due the slow response form the CRTSH site and hence enumeration of huge list of domain is not possible.Even though the tool can easily crawl up to 2000+ URLs if available.
+While enumerating subdomains of certain sites like (Google,Yahoo...) the tool may not respond.This is due the slow response from the CRTSH site and hence enumeration of huge list of domain is not possible.Even though the tool can easily crawl up to 2000+ URLs if available.
 
 
 # Installation and Requirements
@@ -30,7 +30,7 @@ Option | Use
 # ScreenShot
 
 
-![Image of Yaktocat](https://github.com/Tibinsunny/enumcrt/blob/master/screenshot/enum-crt.PNG)
+![Image of enumcrt](https://github.com/Tibinsunny/enumcrt/blob/master/screenshot/enum-crt.PNG)
 
 
 # Examples
