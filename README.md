@@ -29,7 +29,6 @@ Option | Use
 
 # ScreenShot
 
-If you want to embed images, this is how you do it:
 
 ![Image of Yaktocat](https://github.com/Tibinsunny/enumcrt/blob/master/screenshot/enum-crt.PNG)
 
