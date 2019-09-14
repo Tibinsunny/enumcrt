@@ -44,7 +44,7 @@ url2=url1
 temp="";
 num=0;
 url="https://crt.sh/?q=%25."+url2+"&output=json"
-print ("Tagget:"+url2)
+print ("Target:"+url2)
 print ("\n")
 try:
     f = urllib.urlopen(url)
