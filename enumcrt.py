@@ -22,17 +22,16 @@ print("""\
 
 
 import urllib, json,argparse,sys
-
+from termcolor import colored
+from tld import get_fld
+import psycopg2
+import re
 parser = argparse.ArgumentParser()
 parser = argparse.ArgumentParser(description='Process some integers.')
 parser.add_argument('-u', action='store',dest='domain',  type=str, required=True)
 parser.add_argument('-o', action='store', dest='output',  type=str, required=False)
 args = parser.parse_args()
 k=1
-check=sys.version
-if "2.7" not in check:
-    print ("Sorry this requires python version 2.7")
-    exit()
 url1=str(args.domain)
 output1=str(args.output)
 if(output1!="None"):
@@ -41,30 +40,43 @@ if(output1!="None"):
     f1 = open(output, "a")
     k=0  
 url2=url1
-temp="";
-num=0;
+temp=""
+num=0
 url="https://crt.sh/?q=%25."+url2+"&output=json"
 print ("Target:"+url2)
 print ("\n")
 try:
-    f = urllib.urlopen(url)
-    values = json.load(f)
-    f.close()
-    res = [ sub['name_value'] for sub in values ]
-    res=list(dict.fromkeys(res))
-    
     try:
-        for i in range(0,10000):
-            print(res[i])
-            if k==0:
-                f1.write(res[i]+"\n")
-               
-                
-                
-    
+        f = urllib.urlopen(url)
+        values = json.load(f)
+        f.close()
+        res = [ sub['name_value'] for sub in values ]
+        res=list(dict.fromkeys(res))
+        try:
+            for i in range(0,10000):
+                print(res[i])
+                if k==0:
+                    f1.write(res[i]+"\n")
+        except:
+            print("Domains Found: ",i)
     except:
-        print("Completed")
-        print "Domains Found:",i
+        print("Error Retriving Data From API")
+    try:
+        unique_domains = set()
+        print(colored("Connecting to crt.sh database","blue"))
+        conn = psycopg2.connect("dbname=certwatch user=guest host=crt.sh")
+        conn.autocommit =True
+        postgres_cursor=conn.cursor()
+        postgres_cursor.execute("SELECT ci.NAME_VALUE NAME_VALUE FROM certificate_identity ci WHERE ci.NAME_TYPE = 'dNSName' AND reverse(lower(ci.NAME_VALUE)) LIKE reverse(lower('%{}'));".format(url2))
+        for result in postgres_cursor.fetchall():
+            matches = re.findall(r"\'(.+?)\'", str(result))
+            for subdomain in matches:
+                try:
+                    if get_fld("https://"+subdomain)==url2:
+                        unique_domains.add(subdomain.lower())
+                except:pass
+        print(sorted(unique_domains))
+    except:
+        print("Error Pulling Data")
 except:
-    print ("Looks like the server is taking too long to respond,This may be due to the huge domain list :) Try %25.yoursite.com")
-
+    print("Something Went Wrong......!")
