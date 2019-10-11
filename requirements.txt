@@ -1,3 +1,6 @@
 argparse
 urllib
 json
+termcolor
+psycopg2
+re
