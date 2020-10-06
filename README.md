@@ -1,4 +1,4 @@
-# About Enumcrt
+# About Enumcrt (an amazing project)
 Enumcrt is a python tool designed to enumerate subdomains of websites using CRTSH.The traffic sent to enumcrt.py gets reflected in the website crtsh.CRTSH is a  Certificate Transparency (CT) website which is used to perform a Certificate Search. This simple python tool scrapes the website and loads all subdomain obtain as result.
 
 # Enumcrt overload
